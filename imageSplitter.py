@@ -18,20 +18,19 @@ def espacios():
     print("")
 
 def SolicitarArchivo():
-    
-    temp = input("Suelte el archivo aqui: ")
+    espacios()
+    temp = input("·         Suelte el archivo aqui:         · ")
     if temp[-1:] == " ":
         temp = temp[:len(temp) - 1]
         temp = temp.strip("'\"")
     else:
         temp = temp.strip("'\"")
-
-
-
     return(temp)
 
 def procesarimg(stringruta):
-    decidir = input("roughness color? y/n [n]")
+    print("")
+    decidir = input("roughness color? y/n [n]: ")
+    print("")
     img = Image.open(stringruta).convert("RGB")
     r, g, b = img.split()
     cero = Image.new("L", img.size, 0)
@@ -47,12 +46,15 @@ def procesarimg(stringruta):
     img_new_final.save("output/" + os.path.basename(stringruta) + "_metalness.png")
 
     #ROUGHNESS
-    if decidir == "y"or "Y":
+    if decidir == "y":
         img_new_final = Image.merge("RGB", (cero, g, cero))
+        print("output/" + os.path.basename(stringruta) + "_roughness_color.png")
+        img_new_final.save("output/" + os.path.basename(stringruta) + "_roughness_color.png")
     else:
         img_new_final = Image.merge("RGB", (g, g, g))
-    print("output/" + os.path.basename(stringruta) + "_roughness.png")
-    img_new_final.save("output/" + os.path.basename(stringruta) + "_roughness.png")
+        print("output/" + os.path.basename(stringruta) + "_roughness.png")
+        img_new_final.save("output/" + os.path.basename(stringruta) + "_roughness.png")
+    
 
     print("Terminado. Abra /output")
 
@@ -63,6 +65,7 @@ def main():
     actualfile = SolicitarArchivo()
     print (actualfile)
     procesarimg(actualfile)
+    espacios()
     input("Enter to reset")
     main()
 
