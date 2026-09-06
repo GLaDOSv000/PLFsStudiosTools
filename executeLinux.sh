@@ -1,1 +1,1 @@
-python3 imageSplitter.py
+python3 main.py

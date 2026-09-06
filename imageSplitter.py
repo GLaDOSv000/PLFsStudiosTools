@@ -9,7 +9,7 @@ img_name = ""
 
 def clearScreen():
     os.system('cls' if os.name == 'nt' else 'clear')
-    print("-PLF's-Studios---Separador-de-texturas-de-UE------v0.1-------")
+    print("-PLF's-Studios---Separador-de-texturas-de-UE------v1.1-------")
 def espacios():
     print("")
     print("")
